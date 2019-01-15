@@ -1,4 +1,4 @@
-# Dillinger
+# yNormals
 App for flipping normals map channels.
 
 ![yNormals]()

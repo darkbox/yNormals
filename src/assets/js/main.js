@@ -25,7 +25,6 @@ function openImageDialog(){
 function loadImageFromDisk(filepath){
   if (filepath) {
     // read image file from disk
-    console.log(filepath)
     const imageBase64Str = fs.readFileSync(filepath).toString('base64')
 
     // Handle loaded image
@@ -390,7 +389,8 @@ function saveImage(){
   let fname = fpath.substring(fpath.lastIndexOf('/')+1, fpath.lastIndexOf('.'))
   let fext  = fpath.substring(fpath.lastIndexOf('.')+1, fpath.length)
 
-  let finalFileName = appState.output.prefix
+  let finalFileName = appState.input.filename.substring(0, appState.input.filename.lastIndexOf('/')+1)
+  finalFileName += appState.output.prefix
   finalFileName += fname
   finalFileName += appState.output.sufix
   finalFileName += '.png' // + fext

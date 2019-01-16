@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>yNormals</title>
+    <link rel="stylesheet" href="./assets/styles/scss/master.css">
+  </head>
+  <body id="app" style="padding:20px;">
+    <!-- begin app -->
+    <div class="grid template-1">
+      <!-- begin app buttons -->
+      <section class="app-buttons">
+        <button id="btn-open-clear"
+                data-tippy="Open a image or clear it from the work area (<span class='keycap large'>CTRL</span> + <span class='keycap'>O</span>)"
+                class="button">open</button>
+        <button id="btn-about"
+                data-tippy="About Y Normals"
+                class="button">info</button>
+        <div id="busy" style="text-align:center;height:32px;visibility:hidden"><span style="vertical-align: -webkit-baseline-middle;" class="blink">BUSY...</span></div>
+      </section>
+      <!-- begin image rgb channels -->
+      <section class="image-channels">
+        <div>
+          <label><span class="red-channel">X</span></label>
+          <!-- Rounded switch -->
+          <label class="switch" data-tippy="Flip the red channel (<span class='keycap'>X</span>)">
+            <input id="toggle-x" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div>
+          <label><span class="green-channel">Y</span></label>
+          <!-- Rounded switch -->
+          <label class="switch" data-tippy="Flip the green channel (<span class='keycap'>Y</span>)">
+            <input id="toggle-y" type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div>
+          <label><span class="blue-channel">Z</span></label>
+          <!-- Rounded switch -->
+          <label class="switch" data-tippy="Flip the blue channel (<span class='keycap'>Z</span>)">
+            <input id="toggle-z" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </section>
+      <!-- begin dithering options -->
+      <section class="dither-options">
+        <div>
+          <label><span>dither</span></label>
+          <!-- Rounded switch -->
+          <label class="switch"
+                data-tippy="Add dither to the image. Can help with 'color banding' artifacts in some instances (<span class='keycap'>D</span>)"
+                style="float:right;position: absolute;top: 0;right: 0;">
+            <input id="toggle-dither" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Surround the select box within a "custom-select" DIV element.
+        Remember to set the width: -->
+        <div class="custom-select" data-tippy="Changes the dither pattern applied">
+          <select id="select-dither">
+            <option value="0">4x4</option>
+            <option value="1">4x4</option>
+            <option value="2">8x8</option>
+            <option value="3">8x8 Alt</option>
+          </select>
+        </div>
+
+        <div class="range-slidecontainer">
+          <input type="range" min="1" max="255" value="32" class="range-slider"  id="dithering-depth" data-tippy="Controls the dither depth of the effect">
+          <span id="dithering-value" style="float: right;text-align: right;margin-top: 7px;">128</span>
+        </div>
+      </section>
+      <!-- begin output options -->
+      <section class="output-options">
+        <input id="txt-prefix"
+                data-tippy="Preappend a prefix to the filename"
+                type="text"
+                placeholder="PREFIX">
+        <input id="txt-sufix"
+                data-tippy="Append a sufix to the filename"
+                type="text"
+                placeholder="SUFIX">
+        <button id="btn-save"
+                data-tippy="Save image (<span class='keycap large'>CTRL</span> + <span class='keycap'>S</span>)"
+                class="button">save</button>
+      </section>
+      <!-- begin work area -->
+      <section class="work-area">
+        <!-- begin drop area -->
+        <section id="drop-area" class="drag-and-drop">
+          <button id="btn-open-image-dialog" onclick="openImageDialog()" type="button" name="btn-open-image-dialog" class="button">Choose image or drag it here</button>
+        </section>
+        <!-- begin image area -->
+        <section id="image-area" class="hide">
+          <input type="range" min="0" max="100" value="50" style="width: 100%;margin-left: 0;margin-right: 0;margin-bottom:20px" id="image-compare-slider" class="range-slider">
+          <!-- <button id="btn-clear" type="button" name="button" class="button">Remove image</button> -->
+          <div id="image-compare">
+        	  <img id="image-compare-before" src="" alt="Before" />
+        	  <img id="image-compare-after" src="" alt="After" />
+        	</div>
+        </section>
+      </section>
+    </div>
+    <!-- end app -->
+
+    <!-- begin app's about dialog -->
+    <section id="info-dialog" class="dialog-wrap hide">
+      <div class="dialog">
+        <h2>Y Normals</h2>
+        <figure style="text-align: center;padding-bottom: 32px;">
+          <img src="./assets/icons/128x128.png" alt="">
+        </figure>
+        <ul class="list">
+          <li>Version: 1.0</li>
+          <li>License: <a href="#" target="_blank">GPL</a></li>
+          <li>Copyright © 2019 Rafa G.M.</li>
+        </ul>
+        <p style="text-align:center;margin-top:40px;">Made with <span class="heart"></span> by Rafa G.M.</p>
+        <div style="display: flex;justify-content: space-between;align-items: center;margin-top: 40px;">
+          <button type="button" id="info-close" class="button" style="height:48px">close me</button>
+          or
+          <button type="button" id="info-close" class="button">buy me a <span class="coffee"></span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- scripts -->
+    <script src="./node_modules/tippy.js/dist/tippy.all.min.js" charset="utf-8"></script>
+    <script src="./assets/js/shortcuts.js" charset="utf-8"></script>
+    <script src="./assets/js/dropdown-select.js" charset="utf-8"></script>
+    <script src="./assets/js/main.js" charset="utf-8"></script>
+  </body>
+</html>

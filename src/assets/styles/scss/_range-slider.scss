@@ -1,0 +1,50 @@
+.range-slidecontainer {
+  height: $input-height;
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.range-slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: calc(100% - 40px);
+  height: 6px; /* Specified height */
+  background: $dark-bg-color; /* Grey background */
+  outline: none; /* Remove outline */
+  border-radius: $border-radius;
+  margin: 0;
+  margin-top: $input-height / 3;
+
+  .fullwidth{
+    width: 100%;
+  }
+}
+
+
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: $mute-color; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: $border-radius;
+  border: 1px solid $mute-color;
+  outline: none;
+}
+
+.range-slider::-moz-range-thumb {
+  width: 16px; /* Set a specific slider handle width */
+  height: 16px; /* Slider handle height */
+  background: $accent-color; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 100%;
+  border: none;
+  outline: none;
+}
+
+.range-slider:focus::-webkit-slider-thumb{
+  border-color: $accent-color;
+}

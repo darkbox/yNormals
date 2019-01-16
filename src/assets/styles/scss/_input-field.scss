@@ -1,0 +1,19 @@
+input[type="text"]{
+  color: $white;
+  background: $mute-color;
+  border: solid 1px $dark-bg-color;
+  border-radius: 4px;
+  min-height: $input-height;
+  min-width: 100px;
+  text-align: center;
+  font-family: '8Bits', 'Noto Sans', sans-serif;
+}
+
+input::-webkit-input-placeholder{
+  color: $placeholder-text-color;
+}
+
+input:hover,input:focus{
+  outline: none;
+  border-color: $accent-color;
+}

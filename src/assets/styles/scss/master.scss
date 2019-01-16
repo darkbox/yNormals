@@ -1,0 +1,209 @@
+@import 'reset';
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+@import 'toggle-button';
+@import 'custom-select';
+@import 'range-slider';
+@import 'input-field';
+@import 'button';
+@import 'before-after';
+@import 'drag-and-drop';
+@import 'dialog';
+
+@font-face {
+  font-family: 'joystix';
+  src: url('../../fonts/joystix monospace.ttf');
+}
+
+@font-face {
+  font-family: '8Bits';
+  src: url(../../fonts/8BitsOfDoom_Bold.ttf);
+}
+
+:root, *{
+  font-family: 'joystix', '8Bits', 'Noto Sans', sans-serif;
+  font-size: $font-size;
+  line-height: 100%;
+}
+
+:root, html, body{
+  color: $white;
+  background-color: $dark-color;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  @include noselect();
+}
+
+a{ color: $accent-color;}
+
+::selection {
+  background: $accent-color; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $accent-color; /* Gecko Browsers */
+}
+
+.hide{
+  display: none !important;
+}
+
+.grid{
+  display: grid;
+}
+
+.template-1{
+  grid-template-columns: 100px 125px 250px auto;
+  grid-template-rows: 140px 20px auto;
+
+  width: 100%;
+  height: 100%;
+}
+
+.image-channels{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.dither-options{
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.output-options{
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+
+.image-channels,
+.dither-options,
+.output-options{
+  padding-left: 40px;
+}
+
+.app-buttons{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.image-channels,
+.dither-options,
+.output-options,
+.app-buttons{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.app-buttons > *,
+.image-channels > *,
+.dither-options > *,
+.output-options > *{
+  margin-bottom: $general-margin;
+  width: 100%;
+}
+
+.app-buttons:last-child,
+.output-options:last-child{
+  margin-bottom: 0;
+}
+
+.work-area{
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.image-channels > div{
+  position: relative;
+  height: $input-height;
+  display: flex;
+  flex-direction: row;
+}
+
+.dither-options > div:first-of-type{
+  height: $input-height;
+  display: block;
+}
+.dither-options > div:first-of-type > label:first-of-type{
+  height: $input-height;
+  display: flex;
+  align-items: center;
+}
+
+.image-channels > div > label:first-child{
+  display: inline-block;
+  padding-right: $general-margin;
+  display: flex;
+  align-items: center;
+}
+
+.red-channel,.green-channel,.blue-channel{
+  font-weight: bold;
+  line-height: 100%;
+  font-size: $font-size * 2;
+}
+.red-channel{
+  color: $red;
+}
+.green-channel{
+  color: $green;
+}
+.blue-channel{
+  color: $blue;
+}
+
+.keycap{
+  display: inline-block;
+  width: $font-size * 2;
+  height: $font-size * 2;
+  background-image: url('../../images/key.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  text-align: center;
+
+  &.large{
+    width: $font-size * 4;
+    background-image: url('../../images/key_large.png');
+  }
+}
+
+.work-area,#image-area,#image-compare{
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+#image-area{position: relative;height: 100%;text-align:center;}
+#image-compare{text-align: center;margin: 0 auto;}
+#image-compare > img{width: 100%}
+#image-compare-after{position: relative;}
+
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}

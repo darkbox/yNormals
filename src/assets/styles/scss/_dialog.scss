@@ -1,0 +1,62 @@
+.dialog-wrap{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+
+  .hide{
+    display: none;
+  }
+}
+
+.dialog{
+  padding: 20px;
+  background: $dark-color;
+  border-radius: $border-radius;
+
+  min-width: 400px;
+  min-height: 250px;
+  // height: 10%;
+  max-height: 80%;
+
+  h2{
+    font-size: $font-size * 2;
+    text-align: center;
+    margin-bottom: $general-margin * 2;
+  }
+
+  .list{
+    text-align: center;
+
+    li{
+      padding-bottom: $font-size;
+    }
+  }
+}
+
+.heart{
+  display: inline-block;
+  width: $font-size;
+  height: $font-size;
+  background-image: url('../../images/heart.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.coffee{
+  display: inline-block;
+  width: $font-size * 3;
+  height: $font-size * 3;
+  vertical-align: middle;
+  background-image: url('../../images/coffee.gif');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}

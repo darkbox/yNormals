@@ -1,0 +1,575 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+* {
+  box-sizing: border-box; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 32px; }
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0; }
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111111;
+  border: 1px solid #111111;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  top: 6px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #252525;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .slider {
+  background-color: #f26030; }
+
+input:focus + .slider {
+  border-color: #f26030; }
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px); }
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 4px; }
+
+.slider.round:before {
+  border-radius: 4px; }
+
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative; }
+
+.custom-select select {
+  display: none;
+  /*hide original SELECT element: */ }
+
+.select-selected {
+  background-color: #111111;
+  border-radius: 4px;
+  min-height: 32px;
+  width: 100%; }
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fafffd transparent transparent transparent; }
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fafffd transparent;
+  top: 7px; }
+
+/* style the items (options), including the selected item: */
+.select-items div, .select-selected {
+  color: #fafffd;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer; }
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #f26030;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99; }
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none; }
+
+.select-items div:hover, .same-as-selected {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.1); }
+
+.range-slidecontainer {
+  height: 32px;
+  width: 100%;
+  /* Width of the outside container */ }
+
+/* The slider itself */
+.range-slider {
+  -webkit-appearance: none;
+  /* Override default CSS styles */
+  appearance: none;
+  width: calc(100% - 40px);
+  height: 6px;
+  /* Specified height */
+  background: #111111;
+  /* Grey background */
+  outline: none;
+  /* Remove outline */
+  border-radius: 4px;
+  margin: 0;
+  margin-top: 10.6666666667px; }
+  .range-slider .fullwidth {
+    width: 100%; }
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  width: 20px;
+  /* Set a specific slider handle width */
+  height: 20px;
+  /* Slider handle height */
+  background: #252525;
+  /* Green background */
+  cursor: pointer;
+  /* Cursor on hover */
+  border-radius: 4px;
+  border: 1px solid #252525;
+  outline: none; }
+
+.range-slider::-moz-range-thumb {
+  width: 16px;
+  /* Set a specific slider handle width */
+  height: 16px;
+  /* Slider handle height */
+  background: #f26030;
+  /* Green background */
+  cursor: pointer;
+  /* Cursor on hover */
+  border-radius: 100%;
+  border: none;
+  outline: none; }
+
+.range-slider:focus::-webkit-slider-thumb {
+  border-color: #f26030; }
+
+input[type="text"] {
+  color: #fafffd;
+  background: #252525;
+  border: solid 1px #111111;
+  border-radius: 4px;
+  min-height: 32px;
+  min-width: 100px;
+  text-align: center;
+  font-family: '8Bits', 'Noto Sans', sans-serif; }
+
+input::-webkit-input-placeholder {
+  color: #565656; }
+
+input:hover, input:focus {
+  outline: none;
+  border-color: #f26030; }
+
+.button {
+  background-color: #252525;
+  border: 1px solid #252525;
+  color: #fafffd;
+  padding: 5px 20px;
+  min-height: 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px; }
+
+.button:hover, .button:focus {
+  outline: none; }
+
+.button:hover {
+  -webkit-box-shadow: inset 0px 0px 23px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 23px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 23px -6px rgba(0, 0, 0, 0.75); }
+
+.button:focus {
+  border-color: #f26030; }
+
+.before-after {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  user-select: none; }
+
+.before-after .photo img {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
+.before-after .photo.before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: translate(-50%); }
+
+.before-after .photo.before img,
+.before-after .photo.before .layer {
+  transform: translate(50%); }
+
+.before-after .drag-handler {
+  width: 1px;
+  background-color: #191514;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  opacity: 0.25; }
+
+.before-after .drag-handler .drag-element {
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 0;
+  background-color: #f26030;
+  border: 2px #f26030 solid;
+  cursor: pointer;
+  border-radius: 100%; }
+
+.before-after:hover .drag-handler {
+  opacity: 1; }
+
+.drag-and-drop {
+  border-radius: 4px;
+  border: 2px;
+  border-color: #252525;
+  border-style: dashed;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  height: 100%; }
+  .drag-and-drop.highlight {
+    border-color: #f26030; }
+  .drag-and-drop #fileElem {
+    display: none; }
+
+#drop-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+#drop-area > label {
+  max-height: 40px;
+  line-height: 24px; }
+
+#drop-area::before {
+  content: " ";
+  display: block;
+  background-image: url("../../images/drop-here.svg");
+  opacity: 0.2;
+  width: 256px;
+  height: 256px;
+  margin-bottom: 40px; }
+
+.dialog-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%; }
+  .dialog-wrap .hide {
+    display: none; }
+
+.dialog {
+  padding: 20px;
+  background: #191514;
+  border-radius: 4px;
+  min-width: 400px;
+  min-height: 250px;
+  max-height: 80%; }
+  .dialog h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 32px; }
+  .dialog .list {
+    text-align: center; }
+    .dialog .list li {
+      padding-bottom: 12px; }
+
+.heart {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url("../../images/heart.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.coffee {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  vertical-align: middle;
+  background-image: url("../../images/coffee.gif");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+@font-face {
+  font-family: 'joystix';
+  src: url("../../fonts/joystix monospace.ttf"); }
+@font-face {
+  font-family: '8Bits';
+  src: url(../../fonts/8BitsOfDoom_Bold.ttf); }
+:root, * {
+  font-family: 'joystix', '8Bits', 'Noto Sans', sans-serif;
+  font-size: 12px;
+  line-height: 100%; }
+
+:root, html, body {
+  color: #fafffd;
+  background-color: #191514;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+     supported by Chrome and Opera */ }
+
+a {
+  color: #f26030; }
+
+::selection {
+  background: #f26030;
+  /* WebKit/Blink Browsers */ }
+
+::-moz-selection {
+  background: #f26030;
+  /* Gecko Browsers */ }
+
+.hide {
+  display: none !important; }
+
+.grid {
+  display: grid; }
+
+.template-1 {
+  grid-template-columns: 100px 125px 250px auto;
+  grid-template-rows: 140px 20px auto;
+  width: 100%;
+  height: 100%; }
+
+.image-channels {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2; }
+
+.dither-options {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2; }
+
+.output-options {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2; }
+
+.image-channels,
+.dither-options,
+.output-options {
+  padding-left: 40px; }
+
+.app-buttons {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2; }
+
+.image-channels,
+.dither-options,
+.output-options,
+.app-buttons {
+  display: flex;
+  flex-direction: column;
+  position: relative; }
+
+.app-buttons > *,
+.image-channels > *,
+.dither-options > *,
+.output-options > * {
+  margin-bottom: 16px;
+  width: 100%; }
+
+.app-buttons:last-child,
+.output-options:last-child {
+  margin-bottom: 0; }
+
+.work-area {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 4; }
+
+.image-channels > div {
+  position: relative;
+  height: 32px;
+  display: flex;
+  flex-direction: row; }
+
+.dither-options > div:first-of-type {
+  height: 32px;
+  display: block; }
+
+.dither-options > div:first-of-type > label:first-of-type {
+  height: 32px;
+  display: flex;
+  align-items: center; }
+
+.image-channels > div > label:first-child {
+  display: inline-block;
+  padding-right: 16px;
+  display: flex;
+  align-items: center; }
+
+.red-channel, .green-channel, .blue-channel {
+  font-weight: bold;
+  line-height: 100%;
+  font-size: 24px; }
+
+.red-channel {
+  color: #e54b4b; }
+
+.green-channel {
+  color: #87d646; }
+
+.blue-channel {
+  color: #1f81f2; }
+
+.keycap {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url("../../images/key.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  text-align: center; }
+  .keycap.large {
+    width: 48px;
+    background-image: url("../../images/key_large.png"); }
+
+.work-area, #image-area, #image-compare {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden; }
+
+#image-area {
+  position: relative;
+  height: 100%;
+  text-align: center; }
+
+#image-compare {
+  text-align: center;
+  margin: 0 auto; }
+
+#image-compare > img {
+  width: 100%; }
+
+#image-compare-after {
+  position: relative; }
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite; }
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden; } }
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden; } }
+
+/*# sourceMappingURL=master.css.map */

@@ -1,0 +1,25 @@
+{
+  "name": "ynormals",
+  "version": "0.1.0",
+  "description": "Flip normal map channels with ease",
+  "main": "app.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "keywords": [
+    "normals",
+    "map",
+    "textures",
+    "image",
+    "manipulation",
+    "edit"
+  ],
+  "author": "Rafa G.M.",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^4.0.1"
+  },
+  "dependencies": {
+    "tippy.js": "^3.4.1"
+  }
+}

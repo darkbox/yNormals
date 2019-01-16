@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain, shell } = require('electron')
 const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -63,3 +63,24 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+ipcMain.on('open-url', (event, url) =>  {
+  console.log(url)
+
+  // switch (process.platform) {
+  //   case 'darwin':
+  //     child_process.execSync('open ' + url)
+  //     break;
+  //   case 'linux':
+  //     child_process.execSync('xdg-open ' + url)
+  //     break;
+  //   case 'win32':
+  //     child_process.execSync('start ' + url)
+  //     break;
+  //   default:
+  //     shell.openExternal(url)
+  // }
+
+  shell.openExternal(url)
+
+  event.returnValue = true
+})

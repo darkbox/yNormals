@@ -1,5 +1,6 @@
 // ********** Electron ********** //
 const fs = require('fs')
+const { ipcRenderer } = require('electron')
 const remote = require('electron').remote
 
 function openImageDialog(){
@@ -49,11 +50,6 @@ function loadImageFromDisk(filepath){
   } else {
     console.error("Could not open the file %s", filepath)
   }
-}
-
-function saveImageToDisk(){
-  // TODO
-  return
 }
 
 // ********** DropArea ********** //
@@ -161,6 +157,15 @@ function init(){
     const infoClose = document.getElementById('info-close')
     infoClose.addEventListener('click', e => {
       aboutDialog.classList.add('hide')
+    })
+    const buyMeCoffe = document.getElementById('buy-me-coffee')
+    buyMeCoffe.addEventListener('click', e => {
+        ipcRenderer.sendSync('open-url', 'https://ko-fi.com/darkbox')
+    })
+    const showLicense = document.getElementById('show-license')
+    showLicense.addEventListener('click', e => {
+      preventDefaults(e)
+      ipcRenderer.sendSync('open-url', 'https://raw.githubusercontent.com/darkbox/yNormals/master/LICENSE')
     })
   })
 

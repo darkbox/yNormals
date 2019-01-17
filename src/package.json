@@ -1,10 +1,32 @@
 {
   "name": "ynormals",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Flip normal map channels with ease",
+  "homepage": "https://github.com/darkbox/yNormals",
+  "license": "GPL v3",
+  "private": true,
+  "author": {
+  	"name": "Rafa G.M.",
+  	"email": "rgtresd@gmail.com"
+  },
   "main": "app.js",
   "scripts": {
-    "test": "electron ."
+    "start": "electron .",
+    "dist": "build"
+  },
+  "build": {
+  	"appId": "com.rgm.ynormals",
+  	"win": {
+  		"target": "nsis",
+  		"icon": "assets/icons/yNormals_icon.ico"		
+  	},
+  	"linux": {
+  		"target": ["appimage", "snap", "7z"],
+  		"icon": "assets/icons/512x512.png",
+  		"category": "Graphics",
+  		"asar": false,
+  		"files": ["!dist/*", "!builds/*"]
+  	}
   },
   "keywords": [
     "normals",
@@ -17,7 +39,8 @@
   "author": "Rafa G.M.",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^4.0.1"
+    "electron": "^4.0.1",
+    "electron-builder": "^20.38.5"
   },
   "dependencies": {
     "tippy.js": "^3.4.1"

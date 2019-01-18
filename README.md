@@ -1,5 +1,5 @@
 # yNormals
-App for flipping normals map channels or the green channel on 99.9% of cases ;).
+App for flipping normals map channels or the green channel on 99.9% of cases  :confused:
 
 ![yNormals](https://raw.githubusercontent.com/darkbox/yNormals/master/screenshot_01.png)
 

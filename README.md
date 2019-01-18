@@ -11,7 +11,7 @@ Due to web technologies this app have some limitations to consider:
 
 ## Test and build instructions
 Install all dependencies:
-`npm init`
+`npm i`
 
 If you want just to run the app type:
 `npm start`
@@ -23,5 +23,3 @@ License
 ----
 
 [GPL v3](https://raw.githubusercontent.com/darkbox/yNormals/master/LICENSE)
-
-

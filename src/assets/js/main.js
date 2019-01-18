@@ -12,7 +12,7 @@ function openImageDialog(){
       ]
     },
     (filepaths, bookmarks) => {
-      if (filepaths.length > 0) {
+      if (filepaths && filepaths.length > 0) {
         loadImageFromDisk(filepaths[0])
       } else {
         console.warn("No image selected from disk!")
@@ -116,6 +116,14 @@ let appState = {
 init()
 
 function init(){
+
+  // FIXME Only for debugging. Comment this on production
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 123) { // f12 opens dev tools
+      remote.getCurrentWindow().toggleDevTools();
+    }
+  });
+
   // Tooltips setup
   tippy.setDefaults({
     arrow: true,
@@ -168,6 +176,17 @@ function init(){
     })
   })
 
+  // output fields
+  const prefixField = document.getElementById('txt-prefix')
+  const sufixField  = document.getElementById('txt-sufix')
+
+  prefixField.addEventListener('input', e => {
+    appState.output.prefix = prefixField.value
+  })
+  sufixField.addEventListener('input', e => {
+    appState.output.sufix = sufixField.value
+  })
+
   // toggle channels
   let toggleX, toggleY, toggleZ
   toggleX = document.getElementById('toggle-x')
@@ -179,19 +198,26 @@ function init(){
   toggleZ.addEventListener('change', e => {onFlipChannelHandler(toggleZ, 'z')});
 
   shortcuts.add('x', () =>{
-    const e = new Event('change')
-    toggleX.checked = !toggleX.checked
-    toggleX.dispatchEvent(e)
+    // Check prefix or sufix input fields have no focus
+    if (prefixField.id != document.activeElement.id && sufixField.id != document.activeElement.id){
+      const e = new Event('change')
+      toggleX.checked = !toggleX.checked
+      toggleX.dispatchEvent(e)
+    }
   })
   shortcuts.add('y', () =>{
-    const e = new Event('change')
-    toggleY.checked = !toggleY.checked
-    toggleY.dispatchEvent(e)
+    if (prefixField.id != document.activeElement.id && sufixField.id != document.activeElement.id){
+      const e = new Event('change')
+      toggleY.checked = !toggleY.checked
+      toggleY.dispatchEvent(e)
+    }
   })
   shortcuts.add('z', () =>{
-    const e = new Event('change')
-    toggleZ.checked = !toggleZ.checked
-    toggleZ.dispatchEvent(e)
+    if (prefixField.id != document.activeElement.id && sufixField.id != document.activeElement.id){
+      const e = new Event('change')
+      toggleZ.checked = !toggleZ.checked
+      toggleZ.dispatchEvent(e)
+    }
   })
 
   // dither
@@ -229,17 +255,6 @@ function init(){
   sliderDitherDepth.onchange = () => {
     processImage()
   }
-
-  // output fields
-  const prefixField = document.getElementById('txt-prefix')
-  const sufixField  = document.getElementById('txt-sufix')
-
-  prefixField.addEventListener('input', e => {
-    appState.output.prefix = prefixField.value
-  })
-  sufixField.addEventListener('input', e => {
-    appState.output.sufix = sufixField.value
-  })
 
   // save button
   saveBtn = document.getElementById('btn-save')
@@ -397,7 +412,7 @@ function saveImage(){
 
   const base64Str = document.getElementById('image-compare-after').src
 
-  // console.log("Final filename: %s", finalFileName)
+  console.log("Final filename: %s", finalFileName)
   // console.log("base64 string: %s", base64Str)
 
   decodeBase64Image(base64Str).then((result) => {

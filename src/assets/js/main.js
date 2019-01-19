@@ -2,6 +2,8 @@
 const fs = require('fs')
 const { ipcRenderer } = require('electron')
 const remote = require('electron').remote
+const notifier = require('node-notifier')
+const path = require('path')
 
 function openImageDialog(){
   remote.dialog.showOpenDialog(
@@ -118,11 +120,9 @@ init()
 function init(){
 
   // FIXME Only for debugging. Comment this on production
-  document.addEventListener("keydown", function (e) {
-    if (e.which === 123) { // f12 opens dev tools
-      remote.getCurrentWindow().toggleDevTools();
-    }
-  });
+  shortcuts.add('ctrl+shift+f12', () =>{
+    remote.getCurrentWindow().toggleDevTools();
+  })
 
   // Tooltips setup
   tippy.setDefaults({
@@ -421,14 +421,28 @@ function saveImage(){
     if (result.data){
       saveDecodedImageToDisk(finalFileName, result.data).then((result) => {
         // Show native notification
-        const myNotification = new Notification('Title', {
-          body: 'Image saved at (' + result + ')'
+        // const myNotification = new Notification('Title', {
+        //   body: 'Image saved at (' + result + ')'
+        // })
+        notifier.notify({
+          title: 'yNormals',
+          icon: path.join(__dirname, 'assets/icons/64x64.png'),
+          message: 'Image saved at (' + result + ')',
+          sound: false,
+          timeout: 2
         })
       })
     } else {
       // Show native notification
-      const myNotification = new Notification('Title', {
-        body: 'Error saving image'
+      // const myNotification = new Notification('Title', {
+      //   body: 'Error saving image'
+      // })
+      notifier.notify({
+        title: 'yNormals',
+        icon: path.join(__dirname, 'assets/icons/64x64.png'),
+        message: 'Error saving image!',
+        sound: false,
+        timeout: 2
       })
     }
   })

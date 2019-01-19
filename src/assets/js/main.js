@@ -38,7 +38,7 @@ function loadImageFromDisk(filepath){
     let dataType = 'data:image/' + fext + ';base64,'
 
     if (appState.input) {
-      appState.input.filename = filepath
+      appState.input.filename = fpath
       appState.input.extension = fext
     }
 
